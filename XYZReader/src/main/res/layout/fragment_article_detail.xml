@@ -1,5 +1,6 @@
 <com.example.xyzreader.ui.DrawInsetsFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/draw_insets_frame_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -23,6 +24,7 @@
                     android:id="@+id/photo"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    tools:src="@mipmap/ic_launcher"
                      />
 
                 <View
@@ -65,14 +67,16 @@
                         android:textColor="#fff"
                         android:textStyle="bold"
                         android:textSize="@dimen/detail_title_text_size"
-                        android:lineSpacingMultiplier="0.9" />
+                        android:lineSpacingMultiplier="0.9"
+                        tools:text="article title"/>
 
                     <TextView
                         android:id="@+id/article_byline"
                         style="?android:attr/textAppearanceSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="#8fff" />
+                        android:textColor="#8fff"
+                        tools:text="article byline"/>
                 </LinearLayout>
 
                 <TextView
@@ -86,7 +90,9 @@
                     android:textColor="@color/ltgray"
                     android:textColorLink="@color/theme_accent"
                     android:textSize="@dimen/detail_body_text_size"
-                    android:lineSpacingMultiplier="@fraction/detail_body_line_spacing_multiplier" />
+                    android:lineSpacingMultiplier="@fraction/detail_body_line_spacing_multiplier"
+                    tools:text="article body
+                    "/>
 
             </com.example.xyzreader.ui.MaxWidthLinearLayout>
         </FrameLayout>
@@ -103,5 +109,7 @@
         android:src="@drawable/ic_share"
         android:elevation="@dimen/fab_elevation"
         android:contentDescription="@string/action_share" />
+
+
 
 </com.example.xyzreader.ui.DrawInsetsFrameLayout>
