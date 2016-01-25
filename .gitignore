@@ -1,2 +1,6 @@
 XYZReader/build/
 build/
+.idea/*
+.idea
+.gradle
+.DS_Store
