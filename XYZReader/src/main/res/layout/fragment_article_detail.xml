@@ -31,7 +31,7 @@
                 <ImageView
                     android:id="@+id/photo"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/detail_photo_height"
+                    android:layout_height="@dimen/detail_photo_height_not_dynamic"
                     tools:src="@mipmap/ic_launcher"
                     android:scaleType="centerCrop"
                      />
@@ -45,6 +45,7 @@
                 android:layout_weight="3"
                 android:layout_gravity="center_horizontal"
                 android:maxWidth="@dimen/detail_card_max_width"
+                android:layout_marginTop="@dimen/detail_body_surface_top_margin"
                 android:background="#fff"
                 android:elevation="2dp"
 >
