@@ -46,7 +46,7 @@
             android:paddingLeft="@dimen/default_margin"
             android:paddingRight="@dimen/default_margin"
             android:paddingBottom="@dimen/default_margin"
-            android:textColor="@color/theme_secondary_text"
+            android:textColor="?android:textColorSecondary"
             android:maxLines="1"
             android:singleLine="true"
             android:ellipsize="end"
