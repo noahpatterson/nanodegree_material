@@ -1,5 +1,6 @@
 package com.example.xyzreader.ui;
 
+import android.annotation.TargetApi;
 import android.app.Fragment;
 import android.app.LoaderManager;
 import android.content.Intent;
@@ -23,6 +24,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -86,15 +88,6 @@ public class ArticleDetailFragment extends Fragment implements
         mStatusBarFullOpacityBottom = getResources().getDimensionPixelSize(
                 R.dimen.detail_card_top_margin);
         setHasOptionsMenu(true);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Slide slide = new Slide(Gravity.BOTTOM);
-            slide.addTarget(R.id.article_body);
-            slide.setInterpolator(AnimationUtils.loadInterpolator(getContext(), android.R.interpolator
-                    .linear_out_slow_in));
-            slide.setDuration(slideDuration);
-            getWindow().setEnterTransition(slide);
-        }
     }
 
     public ArticleDetailActivity getActivityCast() {
@@ -153,6 +146,7 @@ public class ArticleDetailFragment extends Fragment implements
 
         bindViews();
         updateStatusBar();
+
         return mRootView;
     }
 
@@ -219,6 +213,12 @@ public class ArticleDetailFragment extends Fragment implements
                                 Palette p = Palette.generate(bitmap, 12);
                                 mMutedColor = p.getDarkMutedColor(0xFF333333);
                                 mPhotoView.setImageBitmap(imageContainer.getBitmap());
+
+//                                //start the shared transition that we delayed
+//                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                                    scheduleStartPostponedTransition(mPhotoView);
+//                                }
+
                                 mRootView.findViewById(R.id.meta_bar)
                                         .setBackgroundColor(mMutedColor);
                                 updateStatusBar();
@@ -236,7 +236,21 @@ public class ArticleDetailFragment extends Fragment implements
             bylineView.setText("N/A" );
             bodyView.setText("N/A");
         }
+
     }
+
+//    @TargetApi(21)
+//    private void scheduleStartPostponedTransition(final View sharedElement) {
+//        sharedElement.getViewTreeObserver().addOnPreDrawListener(
+//                new ViewTreeObserver.OnPreDrawListener() {
+//                    @Override
+//                    public boolean onPreDraw() {
+//                        sharedElement.getViewTreeObserver().removeOnPreDrawListener(this);
+//                        getActivity().startPostponedEnterTransition();
+//                        return true;
+//                    }
+//                });
+//    }
 
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
