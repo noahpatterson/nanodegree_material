@@ -34,6 +34,7 @@
                     android:layout_height="@dimen/detail_photo_height_not_dynamic"
                     tools:src="@mipmap/ic_launcher"
                     android:scaleType="centerCrop"
+                    android:transitionName="@string/transitionPhoto"
                      />
 
             </FrameLayout>
